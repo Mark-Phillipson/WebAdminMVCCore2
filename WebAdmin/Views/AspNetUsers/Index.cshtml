@@ -5,11 +5,12 @@
 }
 
 <h2>Index Of Users</h2>
-@if (User.IsInRole("Developer"))
+@if (User.IsInRole("Developer") || User.IsInRole("Admin"))
 {
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
+<p>
+    @*<a asp-action="Create">Create New</a>*@
+    <a asp-action="Register"  asp-controller="Account" asp-route-returnurl="@ViewData["ReturnUrl"]">Register a New User?</a>
+</p>
 }
 <table class="table">
     <thead>
@@ -47,14 +48,16 @@
                 </td>
                 <td>
                     @if (User.IsInRole("Developer"))
-                    { 
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
-                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a>
                         <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        <a asp-action="ResetPasswordAdmin" asp-controller="Account" asp-route-email="@item.Email">Reset Password</a>
                     }
                     else
                     {
                         <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        <a asp-action="ResetPasswordAdmin" asp-controller="Account" asp-route-email="@item.Email">Reset Password</a>
                     }
                 </td>
             </tr>
