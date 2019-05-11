@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebAdmin.Models.AspNetUser>
+@model IEnumerable<WebAdmin.Models.AspNetUser>
 
 @{
     ViewData["Title"] = "Index";
@@ -49,18 +49,20 @@
                 <td>
                     @if (User.IsInRole("Developer"))
                     {
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                        <a asp-action="Details" asp-route-id="@item.Id">Details</a>
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> <span>|</span>
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> <span>|</span>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> <span>|</span>
                         <a asp-action="ResetPasswordAdmin" asp-controller="Account" asp-route-email="@item.Email">Reset Password</a>
                     }
                     else
                     {
-                        <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> <span>|</span>
                         <a asp-action="ResetPasswordAdmin" asp-controller="Account" asp-route-email="@item.Email">Reset Password</a>
                     }
                 </td>
             </tr>
+
         }
     </tbody>
 </table>
+

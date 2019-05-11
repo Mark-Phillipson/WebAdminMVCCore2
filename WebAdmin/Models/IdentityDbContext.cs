@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using WebAdmin.Models;
@@ -19,6 +19,7 @@ namespace WebAdmin.Models
         public virtual DbSet<AspNetUserRole> AspNetUserRoles { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; }
+        public virtual DbSet<Views_Assigned_Role> Views_Assigned_Roles { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -122,8 +123,10 @@ namespace WebAdmin.Models
             {
                 entity.HasKey(e => new { e.UserId, e.LoginProvider, e.Name });
             });
-        }
 
+            modelBuilder.Entity<Views_Assigned_Role>()
+                .HasKey(c => new { c.Userid, c.RoleId });
+        }
         public DbSet<WebAdmin.Models.ApplicationUser> ApplicationUser { get; set; }
     }
 }

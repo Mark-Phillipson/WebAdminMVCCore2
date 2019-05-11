@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -25,6 +26,11 @@ namespace WebAdmin.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _context.AspNetUsers.ToListAsync());
+        }
+
+        public async Task<IActionResult> UsersAndRoles()
+        {
+            return View(await _context.Views_Assigned_Roles.OrderBy(v => v.Username).ThenBy(v => v.Role).ToListAsync());
         }
 
         [AllowAnonymous]
