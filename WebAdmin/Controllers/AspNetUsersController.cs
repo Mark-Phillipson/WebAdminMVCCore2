@@ -25,7 +25,7 @@ namespace WebAdmin.Controllers
         // GET: AspNetUsers
         public async Task<IActionResult> Index()
         {
-            return View(await _context.AspNetUsers.ToListAsync());
+            return View(await _context.AspNetUsers.Include(u => u.AspNetUserRoles).ToListAsync());
         }
 
         public async Task<IActionResult> UsersAndRoles()

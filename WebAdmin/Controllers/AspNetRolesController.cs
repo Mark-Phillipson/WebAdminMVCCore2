@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -63,6 +63,7 @@ namespace WebAdmin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,ConcurrencyStamp,CreatedDate,Description,Ipaddress,Name,NormalizedName")] AspNetRole aspNetRole)
         {
+            aspNetRole.NormalizedName = aspNetRole.Name.ToUpper();
             if (ModelState.IsValid)
             {
                 _context.Add(aspNetRole);

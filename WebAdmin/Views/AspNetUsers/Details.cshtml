@@ -1,4 +1,4 @@
-﻿@model WebAdmin.Models.AspNetUser
+@model WebAdmin.Models.AspNetUser
 
 @{
     ViewData["Title"] = "Details";
@@ -51,14 +51,14 @@
 <div>
     @if (User.IsInRole("Developer"))
     { 
-        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> 
+        <a class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> 
     }
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-sm btn-success" asp-action="Index">Back to List</a>
 </div>
 
 <h4> Application Roles Assigned </h4>
 <p>
-    <a asp-action="Create" asp-controller="AspNetUserRoles" asp-route-userid="@Model.Id">Create New</a>
+    <a class="btn btn-sm btn-success" asp-action="Create" asp-controller="AspNetUserRoles" asp-route-userid="@Model.Id">Create New</a>
 </p>
 <table class="table table-striped">
     <thead>
