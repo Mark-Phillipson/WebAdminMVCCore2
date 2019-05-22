@@ -7,12 +7,12 @@
 <h2>Users</h2>
 @if (User.IsInRole("Developer") || User.IsInRole("Admin"))
 {
-<p>
-    @*<a asp-action="Create">Create New</a>*@
-    <a class="btn btn-sm btn-success" asp-action="Register"  asp-controller="Account" asp-route-returnurl="@ViewData["ReturnUrl"]">Register a New User?</a>
-</p>
+    <p>
+        @*<a asp-action="Create">Create New</a>*@
+        <a class="btn btn-sm btn-success" asp-action="Register" asp-controller="Account" asp-route-returnurl="@ViewData["ReturnUrl"]">Register a New User?</a>
+    </p>
 }
-<table class="table">
+<table class="table table-bordered table-striped" id="table1">
     <thead>
         <tr>
             <th>
@@ -67,4 +67,14 @@
         }
     </tbody>
 </table>
-
+@section Scripts
+    {
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#table1').DataTable({"order":[]});
+            $('input[type="search"]').focus();
+        });
+    </script>
+}

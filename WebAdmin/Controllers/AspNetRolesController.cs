@@ -24,7 +24,7 @@ namespace WebAdmin.Controllers
         // GET: AspNetRoles
         public async Task<IActionResult> Index()
         {
-            return View(await _context.AspNetRoles.ToListAsync());
+            return View(await _context.AspNetRoles.OrderBy(r => r.Name).ToListAsync());
         }
 
         // GET: AspNetRoles/Details/5
